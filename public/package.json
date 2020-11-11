@@ -1,0 +1,33 @@
+{
+  "name": "mini_project",
+  "version": "1.0.0",
+  "description": "this is the directory for mini project",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NelushaEkanayake/mini_project.git"
+  },
+  "author": "Nelusha Ekanayaka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NelushaEkanayake/mini_project/issues"
+  },
+  "homepage": "https://github.com/NelushaEkanayake/mini_project#readme",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "lite-server": "^2.5.4"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "bootstrap-social": "^5.1.1",
+    "font-awesome": "^4.7.0",
+    "font-awesome-icons": "^1.6.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.12.9"
+  }
+}

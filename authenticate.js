@@ -1,20 +1,38 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models/user');
+var Doctor = require('./models/doctor');
+var Admin = require('./models/hospital');
+
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
+
+
 var config = require('./config.js');
 
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use('userLocal',new LocalStrategy(User.authenticate()));
+passport.use('doctorLocal',new LocalStrategy(Doctor.authenticate()));
+passport.use('adminLocal',new LocalStrategy(Admin.authenticate()));
+
+passport.serializeUser(function(user, done) { 
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  if(user!=null)
+    done(null,user);
+});
 
 
+
+
+const maxAge = 3 * 24 * 60 * 60;
+exports.maxAge = maxAge;
 exports.getToken = function(user) {
     return jwt.sign(user, config.secretKey,
-        {expiresIn: 3600});
+        {expiresIn: maxAge});
 };
 
 var opts = {};

@@ -1,44 +1,41 @@
 var express = require('express');
 const bodyParser = require('body-parser');
-var User = require('../models/user');
-var Doctor = require('../models/doctor');
+//var User = require('../models/user');
+var Admin = require('../models/hospital');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var jwt = require('jsonwebtoken');
 
+
 var passport = require('passport');
 
 var authenticate = require('../authenticate');
 
-var router = express.Router();
+var adminRouter = express.Router();
 
-router.use(bodyParser.urlencoded({
+adminRouter.use(bodyParser.urlencoded({
     extended: true
 }));
-router.use(bodyParser.json());
+adminRouter.use(bodyParser.json());
 
 
-
-
-
- 
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+adminRouter.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
 
 
-router.post('/signup', (req, res, next) => {
+adminRouter.post('/signup', (req, res, next) => {
   console.log("hi");
 
   
  
-  User.register(new User({username: req.body.username}), 
+  Admin.register(new Admin({username: req.body.username}), 
     req.body.password, (err, user) => {
     if(err){
       res.statusCode = 500;
@@ -46,25 +43,14 @@ router.post('/signup', (req, res, next) => {
       res.json({err: err});
     }
     else {
-     
-      if (req.body.lastname)
-        user.lastname = req.body.lastname;
-      if (req.body.NIC)
-        user.NIC = req.body.NIC;
-      if (req.body.email)
-        user.email = req.body.email;
-      if (req.body.address)
-        user.address = req.body.address;
       if (req.body.regno)
         user.regno = req.body.regno;
-      if (req.body.admin)
-        user.admin = req.body.admin;
-      if (req.body.doctor)
-        user.doctor = req.body.doctor;
-      if (req.body.patiant)
-        user.patiant = req.body.patiant;
-      if (req.body.doctorname)
-        user.doctorname = req.body.doctorname;
+      
+      if (req.body.hospitalname)
+        user.hospitalname = req.body.hospitalname;
+
+      if (req.body.address)
+        user.address = req.body.address;
     
        user.save((err, user) => {
         if (err) {
@@ -75,7 +61,7 @@ router.post('/signup', (req, res, next) => {
         }
 
         
-        passport.authenticate('userLocal')(req, res, () => {
+        passport.authenticate('adminLocal')(req, res, () => {
           res.statusCode = 200;
           res.setHeader('Content-Type', 'application/json');
           res.json({success: true, status: 'Registration Successful!'});
@@ -95,9 +81,10 @@ router.post('/signup', (req, res, next) => {
 
 
 
-router.post('/login', passport.authenticate('userLocal'), (req, res) => {
- 
+adminRouter.post('/login', passport.authenticate('adminLocal'), (req, res) => {
+
   
+ 
   var maxAge =authenticate.maxAge;
   var uid = req.user._id;
   var token = authenticate.getToken({_id: req.user._id});
@@ -111,11 +98,12 @@ router.post('/login', passport.authenticate('userLocal'), (req, res) => {
 
 
 
-router.get('/logout', (req, res) => {
-  var x = true;
-  exports.x=x;
-  //const token = req.cookie.jwt;
-  //console.log(token);
+adminRouter.get('/logout', (req, res) => {
+
+  var z = true;
+  exports.z=z;
+ 
+  
   try{
     res.cookie('jwt','', {maxAge: 1});
     res.redirect('/');
@@ -128,4 +116,4 @@ router.get('/logout', (req, res) => {
 });
 
 
-module.exports = router;
+module.exports = adminRouter;

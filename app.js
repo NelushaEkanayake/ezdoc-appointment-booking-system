@@ -12,6 +12,9 @@ var hbs = require('express-handlebars');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var doctorRouter = require('./routes/doctors');
+var adminRouter = require('./routes/adminRouter');
+
 
 
 
@@ -51,6 +54,10 @@ app.use(passport.initialize());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/doctors', doctorRouter);
+app.use('/admin', adminRouter);
+
+
 
 
 

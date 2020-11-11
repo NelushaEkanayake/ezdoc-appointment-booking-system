@@ -1,14 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
+//var clinic = require('./models/clinic');
+//var ClinicSchema = require('./common');
+//const { Clinicschema , ClinicModel } = require('./clinicd.js');
 
 
-/*var validateEmail = function(username) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(username)
-};*/
+var Doctor = new Schema({
 
-var User = new Schema({
     username: {
       type: String,
       default: '',
@@ -20,36 +19,30 @@ var User = new Schema({
 
     },
 
-    
+     doctorname: {
+      type: String,
+        default: ''
+    },
  
-    lastname: {
+    regno: {
       type: String,
         default: ''
     },
-    NIC: {
-      type: String,
-        default: ''
-    },
-    firstname: {
-      type: String,
-        default: ''
-        
-    },
+    
+    
 
-    
-    
-    
     admin:   {
         type: Boolean,
         default: false
-    },
+    }
 
-    
+ }, {
+    timestamps: true
 
-    
+    //clinic:[Clinicschema]
 
 });
 
-User.plugin(passportLocalMongoose);
+Doctor.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Doctor', Doctor);

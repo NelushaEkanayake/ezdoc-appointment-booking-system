@@ -7,8 +7,8 @@
 			<div class="collapse navbar-collapse" id="Navbar">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" href="channel.html">Channel</a></li>
-				<li class="nav-item"><a class="nav-link" href="" data-toggle="modal" data-target="#register" id="x">Register</a></li>
-                <li class="nav-item "><a class="nav-link" href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
+				<li class="nav-item ReGU"><a class="nav-link" href="" data-toggle="modal" data-target="#register" id="regidh" href ="/register">Register</a></li>
+                <li class="nav-item loginuser"><a class="nav-link" href="" data-toggle="modal" data-target="#loginModal" id="luname" href="/login">login</a></li>
                 </a></li>
 				
 			</ul>
@@ -109,7 +109,7 @@
         						<label>Hospital Name</label>	
         					</div>
         					<div class="col-sm-5">
-        						<input type="text" name="Hospital Name" placeholder="" class="form-control form-control-sm"  id="firstname" name="username">
+        						<input type="text" name="hosusername" placeholder="" class="form-control form-control-sm"  id="hosusername">
         					 </div>
 						</div>
 
@@ -118,7 +118,7 @@
         						<label>Reg No</label>	
         					</div>
         					<div class="col-sm-5">
-        						<input type="text" name="regno" placeholder="" class="form-control form-control-sm"  id="firstname" name="regno">
+        						<input type="text" name="regno" placeholder="" class="form-control form-control-sm"  id="regno">
         					 </div>
 						</div>
 
@@ -127,7 +127,7 @@
         						<label>Email</label>	
         					</div>
         					<div class="col-sm-5">
-        						<input type="email" name="email" placeholder="" class="form-control form-control-sm"  id="firstname" name="email">
+        						<input type="email" name="hosemail" placeholder="" class="form-control form-control-sm"  id="hosemail">
         					 </div>
 						</div>
 
@@ -142,7 +142,7 @@
                             
 
                              <div class="form-group col-sm-5">
-                                <input type="text" name="" class="form-control form-control-sm" id="" placeholder="type_location" id="hos_loca">
+                                <input type="text" name="hos_loca" class="form-control form-control-sm" id="" placeholder="" id="hos_loca">
                             </div>
 
                              
@@ -157,10 +157,10 @@
                        
 						<div class="form-group row">
 							<div class="col-sm-4 order-sm-first offset-sm-1">
-        						<label>Address</label>	
+        						<label>password</label>	
         					</div>
         					<div class="col-sm-5">
-        						<input type="text" name="haddress" placeholder="" class="form-control form-control-sm"  id="firstname">
+        						<input type="password" name="hospassword" placeholder="" class="form-control form-control-sm"  id="hospassword">
         					 </div>
 						</div>
 
@@ -191,15 +191,20 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="/users/signup" method="post">
+					<form  id="regform"  autocomplete="off">
         					<div class="form-group row ">
         						
         								<div class="col-sm-4 order-sm-first offset-sm-1">
         								<label>First Name</label>	
         								</div>
         								<div class="col-sm-5">
-        							    <input type="text" name="username" placeholder="First Name" class="form-control form-control-sm"  id="firstname">
+        							    <input type="text" name="username" placeholder="First Name" class="form-control form-control-sm"  id="username">
+
+                                        <small class="form-text invalid-feedback">this field must be filled
+                                         letters</small>
+
         						        </div>
+                                        
         								
         				               
         								
@@ -216,7 +221,13 @@
         								</div>
         								<div class="col-sm-5">
         							    <input type="text" name="lastname" placeholder="Last Name" class="form-control form-control-sm"  id="lastname">
+
+                                         <small class="form-text invalid-feedback">this field must be filled
+                                         letters</small>
+
         						        </div>
+                                                                               
+                                        
         								
         				               
         								
@@ -233,7 +244,13 @@
         								</div>
         								<div class="col-sm-5">
         							    <input type="text" name="NIC" placeholder="NIC" class="form-control form-control-sm"  id="NIC">
+
+                                         <small class="form-text invalid-feedback">this field must be filled
+                                         letters</small>
         						        </div>
+
+                                       
+                                        
         								
         				               
         								
@@ -249,9 +266,12 @@
         								<label>Email address</label>	
         								</div>
         								<div class="col-sm-5">
-        							    <input type="text" class="form-control form-control-sm" id="exampleInputEmail3" placeholder="Enter email" name="email">
+        							    <input type="text" class="form-control form-control-sm" id="email" placeholder="Enter email" name="email">
+                                                                                <small class="form-text invalid-feedback">Invalid email</small>
+                                        
         						        </div>
-        								
+
+
         				               
         								
         							
@@ -263,11 +283,16 @@
         					<div class="form-group row ">
         						
         								<div class="col-sm-4 order-sm-first offset-sm-1">
-        								<label>Age</label>	
+        								<label>password</label>	
         								</div>
         								<div class="col-sm-5">
-        							    <input type="text" name="Age" placeholder="age" class="form-control form-control-sm"  id="age">
+        							    <input type="password" name="password" placeholder="password" class="form-control form-control-sm"  id="password">
+
+                                        <small class="form-text invalid-feedback">Invalid password, require greater than 2
+                                         letters</small>
         						        </div>
+                                        
+                                        
         								
         				               
         								
@@ -278,10 +303,15 @@
         					</div>
 
         					 <div class="form-group row">
-                                <label class="col-sm-4 offset-sm-1">Password</label>
+                                <label class="col-sm-4 offset-sm-1">Confirm Password</label>
                                 <div class="col-sm-5">
-                                	<input type="password" class="form-control form-control-sm " id="exampleInputPassword3" placeholder="Password" name="password">
+                                	<input type="password" class="form-control form-control-sm " id="passwordConfirmation" placeholder="Password Comfirmation" name="passwordConfirmation">
+
+                                    <small class="form-text invalid-feedback">Password confirmation is not match with the
+                                    password input</small>
                                 </div>
+                                
+                                
                                 
                             </div>
 
@@ -295,7 +325,7 @@
         					<div class="form-group row">
         						<div class="col-sm-6 offset-sm-3 ">
         							
-                            		<button type="submit" class="btn btn-primary " style="width: 80%">
+                            		<button type="submit" class="btn btn-primary " style="width: 80%" id="ureg">
                                		Create Account
                                	   </button>
         							
@@ -346,15 +376,15 @@
 					
 				</div>
 				<div class="modal-body">
-					 <form action="/users/login" method="post">
+					 <form autocomplete="off">
                         <div class="form-row">
                             <div class="form-group col-sm-4">
-                                    <label class="sr-only" for="exampleInputEmail3">Email address</label>
-                                    <input type="text" class="form-control form-control-sm mr-1" id="exampleInputEmail3" placeholder="Username" name="username">
+                                    <label class="sr-only" >username</label>
+                                    <input type="text" class="form-control form-control-sm mr-1" id="username1" placeholder="Username" name="username1">
                             </div>
                             <div class="form-group col-sm-4">
-                                <label class="sr-only" for="exampleInputPassword3">Password</label>
-                                <input type="password" class="form-control form-control-sm mr-1" id="exampleInputPassword3" placeholder="Password" name="password">
+                                <label class="sr-only">Password</label>
+                                <input type="password" class="form-control form-control-sm mr-1" id="password1" placeholder="Password" name="password1">
                             </div>
                             <div class="col-sm-auto">
                                 <div class="form-check">
@@ -366,7 +396,7 @@
                         </div>
                         <div class="form-row">
                             <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>        
+                            <button type="submit" class="btn btn-primary btn-sm ml-1" id="loginBtn">Sign in</button>        
                         </div>
                     </form>
 				</div>
@@ -530,9 +560,9 @@
 
 	
 	<!-- jQuery first, then Popper.js, then Bootstrap JS. -->
-    <script src="node_modules1/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules1/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules1/bootstrap/dist/js/bootstrap.min.js"></script>
+    
 
     <script type="text/javascript">
     	$(document).ready(function(){
@@ -561,9 +591,9 @@
 
 
 
-                 $("#search_input_1").click(function(){
+                /* $("#search_input_1").click(function(){
                     $("header").addClass("dark");
-                    });
+                    });*/
 
                 
 
@@ -582,6 +612,5 @@
 
     
     </script>
-
 
 
