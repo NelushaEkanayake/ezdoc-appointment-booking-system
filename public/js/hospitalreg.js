@@ -1,7 +1,5 @@
-/*
-default return false, return true if has errors
- */
-function validateInput(firstname,lastname,NIC,username,password,passwordConfirmation) {
+var URL = location.protocol + '//' + location.host;
+function validateInput(FirstName,lastname,NIC,username,password,passwordConfirmation) {
     //check email
     const EMAIL_REG = /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
     if(username.match(EMAIL_REG)){
@@ -25,10 +23,10 @@ function validateInput(firstname,lastname,NIC,username,password,passwordConfirma
    }
 
 
-    if(firstname !==""){
-         $("#firstname").removeClass("is-invalid");
+    if(FirstName !==""){
+         $("#FirstName").removeClass("is-invalid");
      }else{
-        $("#firstname").addClass("is-invalid");
+        $("#FirstName").addClass("is-invalid");
      }
 
      if(lastname !==""){
@@ -45,17 +43,18 @@ function validateInput(firstname,lastname,NIC,username,password,passwordConfirma
 
 
 
-    if(!username.match(EMAIL_REG) || password.length <= 2 || password !== passwordConfirmation || firstname ==""|| lastname ==""|| NIC =="")
+    if(!username.match(EMAIL_REG) || password.length <= 2 || password !== passwordConfirmation || FirstName ==""|| lastname ==""|| NIC =="")
         return true; //has errors
 
     return false;
 }
 
 function handleClickRegisterBtn() {
-    $("#ureg").on("click", function(event) {
+    $("#reghospital").on("click", function(event) {
+        alert("ejfheiu");
         event.preventDefault();
 
-        let firstname = $("#firstname").val();
+        let FirstName = $("#FirstName").val();
         let lastname = $("#lastname").val();
         let NIC = $("#NIC").val();
         let username = $("#username").val();
@@ -65,21 +64,22 @@ function handleClickRegisterBtn() {
         //let fullName = $("#fullName").val();
 
         //validate input
-       // let check = validateInput(firstname,lastname,NIC,username,password,passwordConfirmation);
+        let check = validateInput(FirstName,lastname,NIC,username,password,passwordConfirmation);
 
        if (!check) {
             //send data to node server with ajax
             //url map to http://localhost/register-new-user
+             //var signupAPI = URL + "/users/signup";
             $.ajax({
-                url: `${window.location.origin}/users/signup`,
+                url: `http://localhost:3000/users/signup`,
                 method: "POST",
-                data: {firstname: firstname, lastname: lastname,NIC: NIC,username: username, password: password},
+                data: {username: username, lastname: lastname,NIC: NIC,FirstName: FirstName, password: password},
                 success: function(data) {
 
         
 
-                    
-                    console.log(data);
+                	
+                	console.log(data);
                     $("#register").modal('hide');
                     alert("Create a new account succeeds!");
                 
@@ -105,7 +105,7 @@ function handleClickRegisterBtn() {
                 
                 listItem.parentNode.replaceChild(newItem, listItem);
                 var usname = document.getElementById("NewUser");
-                usname.innerHTML = firstname;
+                usname.innerHTML = FirstName;
 
             
 
@@ -187,15 +187,5 @@ function handleClickRegisterBtn() {
 $(document).ready(function() {
     handleClickRegisterBtn();
 });
-
-
-
-
-
-
-
-
-
-
 
 

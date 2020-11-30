@@ -17,7 +17,7 @@ function handleLoginBtn(){
                 
                 listItem.parentNode.replaceChild(newItem, listItem);
                 var usname = document.getElementById("NewUser");
-                usname.innerHTML = username;
+                usname.innerHTML = data.name;
 
             
 

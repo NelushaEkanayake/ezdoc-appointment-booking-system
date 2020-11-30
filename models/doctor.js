@@ -4,7 +4,31 @@ var passportLocalMongoose = require('passport-local-mongoose');
 //var clinic = require('./models/clinic');
 //var ClinicSchema = require('./common');
 //const { Clinicschema , ClinicModel } = require('./clinicd.js');
+//var { Clinicschema , ClinicModel } = require('./clinicd');
 
+/*var clinicSchema = new Schema({
+    clinicname:  {
+        type: String,
+        required: true
+    },
+    time:  {
+        type: String,
+        required: true
+    },
+
+    doctor: {
+      type: mongoose.Schema.Types.ObjectId,
+       ref: 'Doctor'
+    },
+     hospital:  {
+        type: String,
+        default: ''
+    }
+
+}, {
+    timestamps: true
+});
+*/
 
 var Doctor = new Schema({
 
@@ -36,13 +60,20 @@ var Doctor = new Schema({
         default: false
     }
 
+    //comments:[clinicSchema]
+
  }, {
     timestamps: true
 
-    //clinic:[Clinicschema]
+    
+
+
+
+    
 
 });
 
 Doctor.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('Doctor', Doctor);
+

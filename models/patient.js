@@ -8,7 +8,7 @@ var passportLocalMongoose = require('passport-local-mongoose');
     return re.test(username)
 };*/
 
-var User = new Schema({
+var Patient = new Schema({
     username: {
       type: String,
       default: '',
@@ -30,7 +30,7 @@ var User = new Schema({
       type: String,
         default: ''
     },
-    firstname: {
+    FirstName: {
       type: String,
         default: ''
         
@@ -50,6 +50,6 @@ var User = new Schema({
 
 });
 
-User.plugin(passportLocalMongoose);
+Patient.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Patient', Patient);

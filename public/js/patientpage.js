@@ -1,13 +1,14 @@
 /*
 default return false, return true if has errors
  */
-function validateInput(username,lastname,NIC,email,password,passwordConfirmation) {
+ var URL = location.protocol + '//' + location.host;
+function validateInput(FirstName,lastname,NIC,username,password,passwordConfirmation) {
     //check email
     const EMAIL_REG = /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
-    if(email.match(EMAIL_REG)){
-        $("#email").removeClass("is-invalid");
+    if(username.match(EMAIL_REG)){
+        $("#username").removeClass("is-invalid");
     }else {//empty email input or invalid email
-        $("#email").addClass("is-invalid");
+        $("#username").addClass("is-invalid");
     }
 
     //check password
@@ -25,10 +26,10 @@ function validateInput(username,lastname,NIC,email,password,passwordConfirmation
    }
 
 
-    if(username !==""){
-         $("#username").removeClass("is-invalid");
+    if(FirstName !==""){
+         $("#FirstName").removeClass("is-invalid");
      }else{
-        $("#username").addClass("is-invalid");
+        $("#FirstName").addClass("is-invalid");
      }
 
      if(lastname !==""){
@@ -45,35 +46,37 @@ function validateInput(username,lastname,NIC,email,password,passwordConfirmation
 
 
 
-    if(!email.match(EMAIL_REG) || password.length <= 2 || password !== passwordConfirmation || username ==""|| lastname ==""|| NIC =="")
+    if(!username.match(EMAIL_REG) || password.length <= 2 || password !== passwordConfirmation || FirstName ==""|| lastname ==""|| NIC =="")
         return true; //has errors
 
     return false;
 }
 
 function handleClickRegisterBtn() {
-    $("#ureg").on("click", function(event) {
+    $("#UreG").on("click", function(event) {
+        alert("ejfheiu");
         event.preventDefault();
 
-        let username = $("#username").val();
+        let FirstName = $("#FirstName").val();
         let lastname = $("#lastname").val();
         let NIC = $("#NIC").val();
-        let email = $("#email").val();
+        let username = $("#username").val();
         let passwordConfirmation = $("#passwordConfirmation").val();
         let password = $("#password").val();
         //let passwordConfirmation = $("#passwordConfirmation").val();
         //let fullName = $("#fullName").val();
 
         //validate input
-        let check = validateInput(username,lastname,NIC,email,password,passwordConfirmation);
+        let check = validateInput(FirstName,lastname,NIC,username,password,passwordConfirmation);
 
        if (!check) {
             //send data to node server with ajax
             //url map to http://localhost/register-new-user
+             //var signupAPI = URL + "/users/signup";
             $.ajax({
-                url: `${window.location.origin}/users/signup`,
+                url: `http://localhost:3000/users/signup`,
                 method: "POST",
-                data: {username: username, lastname: lastname,NIC: NIC,email: email, password: password},
+                data: {username: username, lastname: lastname,NIC: NIC,FirstName: FirstName, password: password},
                 success: function(data) {
 
         
@@ -105,7 +108,7 @@ function handleClickRegisterBtn() {
                 
                 listItem.parentNode.replaceChild(newItem, listItem);
                 var usname = document.getElementById("NewUser");
-                usname.innerHTML = username;
+                usname.innerHTML = FirstName;
 
             
 

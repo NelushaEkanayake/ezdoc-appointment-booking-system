@@ -11,9 +11,12 @@ var config = require('./config');
 var hbs = require('express-handlebars');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var patientRouter = require('./routes/patients');
 var doctorRouter = require('./routes/doctors');
 var adminRouter = require('./routes/adminRouter');
+var clinicRouter = require('./routes/clinic');
+var hclinicRouter = require('./routes/hclinic');
+var pclinicRouter = require('./routes/pclinic');
 
 
 
@@ -35,6 +38,8 @@ var app = express();
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -53,7 +58,7 @@ app.use(passport.initialize());
 //app.use(passport.session());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', patientRouter);
 app.use('/doctors', doctorRouter);
 app.use('/admin', adminRouter);
 
@@ -61,9 +66,13 @@ app.use('/admin', adminRouter);
 
 
 
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use('/doctor', clinicRouter);
+app.use('/hospital', hclinicRouter);
+app.use('/patient', pclinicRouter);
 
 
 

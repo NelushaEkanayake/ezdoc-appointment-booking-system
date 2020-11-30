@@ -28,7 +28,8 @@ var Admin = new Schema({
  
     regno: {
       type: String,
-        default: ''
+        default: '',
+        unique: true
     },
     
     hospitalname: {
