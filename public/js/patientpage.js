@@ -2,13 +2,13 @@
 default return false, return true if has errors
  */
  var URL = location.protocol + '//' + location.host;
-function validateInput(FirstName,lastname,NIC,username,password,passwordConfirmation) {
+function validateInput1(FirstName,lastname,NIC,username,password,passwordConfirmation) {
     //check email
     const EMAIL_REG = /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
     if(username.match(EMAIL_REG)){
-        $("#username").removeClass("is-invalid");
+        $("#pusername").removeClass("is-invalid");
     }else {//empty email input or invalid email
-        $("#username").addClass("is-invalid");
+        $("#pusername").addClass("is-invalid");
     }
 
     //check password
@@ -60,14 +60,14 @@ function handleClickRegisterBtn() {
         let FirstName = $("#FirstName").val();
         let lastname = $("#lastname").val();
         let NIC = $("#NIC").val();
-        let username = $("#username").val();
+        let username = $("#pusername").val();
         let passwordConfirmation = $("#passwordConfirmation").val();
         let password = $("#password").val();
         //let passwordConfirmation = $("#passwordConfirmation").val();
         //let fullName = $("#fullName").val();
 
         //validate input
-        let check = validateInput(FirstName,lastname,NIC,username,password,passwordConfirmation);
+        let check = validateInput1(FirstName,lastname,NIC,username,password,passwordConfirmation);
 
        if (!check) {
             //send data to node server with ajax

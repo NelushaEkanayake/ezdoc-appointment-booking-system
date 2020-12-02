@@ -1,9 +1,4 @@
-/*
-default return false, return true if has errors
- */
-
-
-function adminpageLogout() {
+function doctorpageLogout() {
     
         //event.preventDefault();
 
@@ -18,11 +13,11 @@ function adminpageLogout() {
 
         //validate input
        // let check = validateInput(firstname,lastname,NIC,username,password,passwordConfirmation);
-          $("#hossignout").on("click", function(event) {
+          $("#docsignout").on("click", function(event) {
                event.preventDefault();
 
                     $.ajax({
-                    url: `${window.location.origin}/admins/logout`,
+                    url: `${window.location.origin}/doctors/logout`,
                     method: "GET",
             
                     success: function(data) {
@@ -65,14 +60,8 @@ function adminpageLogout() {
 
 
 $(document).ready(function() {
-    adminpageLogout();
+    doctorpageLogout();
 });
-
-
-
-
-
-
 
 
 

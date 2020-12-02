@@ -89,6 +89,7 @@ doctorRouter.post('/login', passport.authenticate('doctorLocal'), (req, res) => 
   res.statusCode = 200;
   //res.setHeader('Content-Type', 'application/json');
   //res.json({success: true, token: token, status: 'You are successfully logged in!'});
+  //res.render('DoctorPanel', { title: 'ezdoc' });
   res.cookie('jwt',token, {httpOnly:true, maxAge : maxAge * 1000});
   res.status(201).json({user : uid});
    //res.status(201).send({ code: 0, message: 'ok', data: token });

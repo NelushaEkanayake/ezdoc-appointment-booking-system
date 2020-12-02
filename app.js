@@ -17,6 +17,7 @@ var adminRouter = require('./routes/adminRouter');
 var clinicRouter = require('./routes/clinic');
 var hclinicRouter = require('./routes/hclinic');
 var pclinicRouter = require('./routes/pclinic');
+//var adminpageRouter = require('./routes/adminpage');
 
 
 
@@ -58,9 +59,10 @@ app.use(passport.initialize());
 //app.use(passport.session());
 
 app.use('/', indexRouter);
+//app.use('/adminpage', adminpageRouter);
 app.use('/users', patientRouter);
 app.use('/doctors', doctorRouter);
-app.use('/admin', adminRouter);
+app.use('/admins', adminRouter);
 
 
 
