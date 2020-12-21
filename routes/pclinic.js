@@ -56,15 +56,56 @@ pclinicRouter.route('/clinics')
 */
 
 
-.get((req,res,next) => {
+/*.get((req,res,next) => {
     Clinics.find({})
     //.populate('comments.author')
     .then((clinics) => {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
-        res.json(clinics);
+       
+        //res.setHeader('Content-Type', 'application/json');
+         console.log(clinics);
+         res.statusCode = 200;
+         res.render('channel',{time:clinics.time});
+        //res.redirect('/channelpage');
+        //res.json(clinics);
     }, (err) => next(err))
     .catch((err) => next(err));
+});*/
+
+
+/*.get((req,res,next) => {
+    var resultArray = [];
+    var time;
+    var clinic;
+    Clinics.find({}, function(err, data){
+       if (err) throw err
+            data.forEach(function(err,doc){
+                
+                resultArray.push(doc);
+               // console.log(resultArray[x].time);
+
+            })
+            res.render('channel',{items:resultArray});
+    })
+    //.populate('comments.author')
+    
+});*/
+
+.get( (req, res) => {
+    Clinics.find((err, docs) => {
+        if (!err) {
+            console.log(typeof(docs));
+            console.log(docs[1]);
+            console.log(docs[1].clinicname);
+            var x = docs[1].clinicname;
+            console.log(x);
+            res.render("channel", {
+                list: docs.map(Clinics => Clinics.toJSON())
+            });
+        }
+        else {
+            console.log('Error in retrieving employee list :' + err);
+        }
+    });
 });
 
 

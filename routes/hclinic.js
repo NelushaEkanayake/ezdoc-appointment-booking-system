@@ -66,10 +66,13 @@ hclinicRouter.route('/clinics')
 })
 
 .post(authenticate.verifyAdmin,(req, res, next) => {
-    req.body.hospital = req.user._id;
+    req.body.hospital = req.user.hospitalname;
     Clinics.create(req.body)
 
     .then((clinic) => {
+        
+
+        
         console.log('clinic Created ', clinic);
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');

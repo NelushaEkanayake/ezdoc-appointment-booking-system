@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+//var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 //var clinic = require('./models/clinic');
 //var ClinicSchema = require('./common');
 //const { Clinicschema , ClinicModel } = require('./clinicd.js');
 
 
-var Admin = new Schema({
+var Admin = new mongoose.Schema({
 
     username: {
       type: String,

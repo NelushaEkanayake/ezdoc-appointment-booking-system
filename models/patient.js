@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+//var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
 
@@ -8,7 +8,7 @@ var passportLocalMongoose = require('passport-local-mongoose');
     return re.test(username)
 };*/
 
-var Patient = new Schema({
+var Patient = new mongoose.Schema({
     username: {
       type: String,
       default: '',

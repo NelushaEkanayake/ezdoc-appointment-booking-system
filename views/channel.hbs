@@ -1,0 +1,186 @@
+
+
+ 	
+ 	
+ 	<link rel="stylesheet" type="text/css" href="node_modules1/bootstrap-social/bootstrap-social.css">
+ 	<link rel="stylesheet" type="text/css" href="node_modules1/@fortawesome/fontawesome-free/css/all.css">
+ 	
+ 	<link rel="stylesheet" type="text/css" href="node_modules1/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules1/font-awesome/css/font-awesome.css">
+
+    
+ 
+ 	<link rel="stylesheet" type="text/css" href="css/styles5.css">
+    
+	
+	<nav class="navbar navbar-dark navbar-expand-sm  fixed-top " style="padding: 9.8px">
+		<div class="container">
+
+			
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+						<span class="navbar-toggler-icon"></span>
+						</button>
+						<a href="#" class="navbar-brand mr-auto"><img src="img/logo.png" height="80" width="80" alt="logo"></a>
+						<div class="collapse navbar-collapse" id="Navbar">
+							<ul class="navbar-nav ml-auto">
+				
+							<li class="nav-item mr-1"><a class="nav-link" href="" data-toggle="modal" data-target="#register" id="x">Login</a></li>
+                			<li class="nav-item ml-1"><a class="nav-link" href="" data-toggle="modal" data-target="#loginModal"><span class="icon-bar"></span>Are You a Practitioner?</a></li>
+                			</a></li>
+				
+							</ul>
+			 
+						</div>
+
+			
+				
+
+
+		
+
+			
+			
+			
+		</div>
+
+		
+
+		
+	</nav>
+
+
+	<header class="jumbotron ">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-11 clinic-search " style=" height:60px; ">
+
+					<div class="row">
+							
+										<div class=" md-form  col-md-3 field1 " style=" height:60px; " >
+  											<input class="form-control shadow-none transparent-input bg-transparent " type="text" placeholder="Name of the Doctor" aria-label="Search">
+										</div>
+
+						
+							
+
+							<div class="   col-md-3 field1" >
+  								<input class="form-control  shadow-none bg-transparent" type="text" placeholder="Specialty & Expertise" aria-label="Search" style="">
+							</div>
+							<div class="   col-md-3  field1" >
+  								<input class="form-control  shadow-none bg-transparent" type="text" placeholder="Date" aria-label="Search" style="">
+							</div>
+
+							<div class="   col-md-3  field1" >
+  								<input class="form-control  shadow-none bg-transparent" type="text" placeholder="Location" aria-label="Search" style="margin-right:0px; ">
+							</div>
+
+					</div>
+
+					
+
+					
+
+						
+						
+					
+						
+				</div>
+
+				<div class="col-md-1 green-button" style="height: 60px;">
+					<div class="row">
+						<div class="col-md-12  green" style="height: 60px;">
+							 <a class="btn btn-default  green-search" href="http://twitter.com/"><i class="fa fa-search fa-2x mt-2"></i></a>
+						</div>
+						
+					</div>
+					
+				</div>
+
+				
+				
+			</div>
+			
+		</div>
+		
+
+	</header>
+
+	<div class="container">
+        <div class="row " >
+            <ol class="col-12 breadcrumb">
+                <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+                <li class="breadcrumb-item active">Channel</li>
+            </ol>
+            <div class="col-12">
+               
+               <hr>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+    	{{#each  list}}
+    	<div class="row">
+    		
+
+    		<div class="col-lg-12 col-xl-12 mr-auto  py-2 top-navbar" style="margin:0px auto" >
+
+    			<div class="card " style="box-shadow: 2px 2px 2px  #999; " >
+                    
+                    <div class="card-body" style="padding-top: 3px; padding-bottom: 3px; " >
+                        <div class="row" > 
+                            <div class="col-sm-2  " style=" padding: 3px;">
+                            	<img src="img/alberto.png" class="d-flex mr-3 img-thumbnail align-self-center " alt="alberto">
+                            </div>
+                            <div class="col-sm-6" style=" padding: 3px">
+                            	<h6>{{this.clinicname}}</h6>
+               			 		<h6>{{this.doctor}}</h6>
+               			 		<h6>{{this.hospital}}</h6>
+                				<p  class="d-none d-sm-block">{{this.time}}</p>
+                            </div>
+                            <div class="col-sm-4 align-self-center" style=" padding-left: 80px">
+                            	<button class="btn  docbook ">Book now	</button>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+
+    		</div>
+
+    		
+    		
+    	</div>
+    	{{/each}}
+    	
+    	
+    </div>
+
+    
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+	 <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+    <script src="node_modules1/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules1/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules1/bootstrap/dist/js/bootstrap.min.js"></script>
+
+

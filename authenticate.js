@@ -41,15 +41,24 @@ exports.getToken = function(user) {
 };
 
 
- const cookieExtractor = (req) => {
-  var token = null;
-  if (req && req.cookies) token = req.cookies.jwt;
-  return token;
+ var cookieExtractor = function(req) {
+    var token = null;
+   
+
+    if (req && req.cookies) {
+        token = req.cookies.jwt;
+        console.log("success");
+    }
+    
+    return token;
+
 };
 //module.exports = {cookieExtractor};
 var opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.jwtFromRequest = cookieExtractor;
 opts.secretOrKey = config.secretKey;
+
+//ExtractJwt.fromAuthHeaderAsBearerToken();
 
 exports.jwtPassport = passport.use('patient',new Jwtstrategy(opts,
     (jwt_payload, done) => {

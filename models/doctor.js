@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+//var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 //var clinic = require('./models/clinic');
 //var ClinicSchema = require('./common');
@@ -30,7 +30,7 @@ var passportLocalMongoose = require('passport-local-mongoose');
 });
 */
 
-var Doctor = new Schema({
+var Doctor = new mongoose.Schema({
 
     username: {
       type: String,

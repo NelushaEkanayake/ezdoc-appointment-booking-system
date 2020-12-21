@@ -3,38 +3,34 @@ var mongoose = require('mongoose');
 //var passportLocalMongoose = require('passport-local-mongoose');
 //var ClinicSchema = require('./common');
 
-var clinicschema = new mongoose.Schema({
+var appointmentschema = new mongoose.Schema({
 
-     clinicname: {
-      type: String,
-        default: ''
+     appointmentname: {
+      type: mongoose.Schema.Types.ObjectId,
+        default: 'Clinic'
     },
  
     time: {
-      type: String,
-        default: ''
+      type: mongoose.Schema.Types.ObjectId,
+        default: 'Clinic'
     },
     doctor: {
       type: mongoose.Schema.Types.ObjectId,
-       ref: 'Doctor'
+       ref: 'Clinic'
     },
     
 
         hospital:  {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Admin'
+        ref: 'Clinic'
     },
 
-    doctor: {
-      type: String,
-        default: ''
-    },
-    
-
-        hospital:  {
-        type: String,
-        default: ''
+    patientname: {
+       type: mongoose.Schema.Types.ObjectId,
+        ref: 'Patient'
     }
+
+   
   },{
     timestamps: true
   }
@@ -43,7 +39,7 @@ var clinicschema = new mongoose.Schema({
 
 //Clinicschema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('Clinic', clinicschema);
+module.exports = mongoose.model('Appointment', appointmentschema);
 
  
 
