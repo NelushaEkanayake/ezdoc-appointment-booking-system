@@ -1,4 +1,4 @@
-function validateInput3(doctorname,regno,passwordConfirmation,username,password) {
+function validateInput3(doctorname,regno,passwordConfirmation,username,password,city,specialty) {
     //check email
     const EMAIL_REG = /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
     if(username.match(EMAIL_REG)){
@@ -28,6 +28,21 @@ function validateInput3(doctorname,regno,passwordConfirmation,username,password)
         $("#DName").addClass("is-invalid");
      }
 
+
+     if(city !==""){
+        $("#city").removeClass("is-invalid");
+    }else{
+       $("#city").addClass("is-invalid");
+    }
+
+    if(specialty !==""){
+        $("#specialty").removeClass("is-invalid");
+    }else{
+       $("#specialty").addClass("is-invalid");
+    }
+
+     
+
      if(regno !==""){
          $("#Dregno").removeClass("is-invalid");
      }else{
@@ -38,7 +53,7 @@ function validateInput3(doctorname,regno,passwordConfirmation,username,password)
 
 
 
-    if(!username.match(EMAIL_REG) || password.length <= 2  || doctorname ==""|| regno ==""|| password !== passwordConfirmation )
+    if(!username.match(EMAIL_REG) || password.length <= 2  || doctorname ==""|| regno ==""|| password !== passwordConfirmation || city ==""||specialty =="")
         return true; //has errors
 
     return false;
@@ -46,30 +61,32 @@ function validateInput3(doctorname,regno,passwordConfirmation,username,password)
 
 function handleClickRegisterDOC() {
     $("#Dregbtn").on("click", function(event) {
-        alert("ejfheiu");
+        
         event.preventDefault();
 
         let doctorname = $("#DName").val();
         let regno = $("#Dregno").val();
         let confirmpassword = $("#Dpassword2").val();
         let username = $("#Dusername").val();
+        let city = $("#city").val();
+        let specialty = $("#specialty").val();
        // let passwordConfirmation = $("#passwordConfirmation").val();
         let password = $("#Dpassword").val();
         //let passwordConfirmation = $("#passwordConfirmation").val();
         //let fullName = $("#fullName").val();
 
         //validate input
-        let check1 = validateInput3(doctorname,regno,confirmpassword,username,password);
+        let check1 = validateInput3(doctorname,regno,confirmpassword,username,password,city,specialty);
 
        if (!check1) {
-         alert("hi");
+         
             //send data to node server with ajax
             //url map to http://localhost/register-new-user
              //var signupAPI = URL + "/users/signup";
             $.ajax({
                 url: `${window.location.origin}/doctors/signup`,
                 method: "POST",
-                data: {username: username, doctorname: doctorname,regno: regno, password: password},
+                data: {username: username, doctorname: doctorname,regno: regno, password: password,city:city,specialty:specialty},
                 success: function(data) {
 
         

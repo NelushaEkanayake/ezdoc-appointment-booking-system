@@ -1,9 +1,38 @@
 var mongoose = require('mongoose');
-//var Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 //var clinic = require('./models/clinic');
 //var ClinicSchema = require('./common');
 //const { Clinicschema , ClinicModel } = require('./clinicd.js');
+
+var doctorSchema = new Schema({
+    
+  doctorid:  {
+      type: String,
+      default: ''
+  },
+
+  docname:  {
+    type: String,
+    default: ''
+},
+
+specialty:  {
+  type: String,
+  default: ''
+},
+
+email:  {
+  type: String,
+  default: ''
+},
+
+  
+}, {
+  timestamps: true
+});
+
+mongoose.model('Docs', doctorSchema);
 
 
 var Admin = new mongoose.Schema({
@@ -42,7 +71,9 @@ var Admin = new mongoose.Schema({
     admin:   {
         type: Boolean,
         default: false
-    }
+    },
+
+    doctors:[doctorSchema]
 
  }, {
     timestamps: true

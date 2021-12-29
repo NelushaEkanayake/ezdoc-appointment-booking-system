@@ -54,7 +54,7 @@ function validateInput1(FirstName,lastname,NIC,username,password,passwordConfirm
 
 function handleClickRegisterBtn() {
     $("#UreG").on("click", function(event) {
-        alert("ejfheiu");
+        
         event.preventDefault();
 
         let FirstName = $("#FirstName").val();

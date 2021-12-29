@@ -1,0 +1,69 @@
+<section id="contact2">
+    <div class="back">
+
+
+
+
+
+        <div class="container">
+
+            <div class="col-lg-10 bg-light p-3 p-md-5 offset-md-1">
+                <h2 class="title text-center pb-4">Schedule a New Clinic</h2>
+                <div class="row">
+                    <div class="col-lg-5 col-md-12">
+                        <img src="../img/clinic.svg" class="conimage  w-100 pt-5" alt="...">
+                    </div>
+                    <div class="col-lg-7 col-md-12">
+                        <form class="contact-form" action="#" method="post">
+                            <div class="col-sm-12">
+                                
+                            </div>
+                            <div class="form-group  pb-2">
+                                <div class="col-sm-12">
+
+                                    <label for="docn" class="none px-2 pb-1">Choose a Doctor</label>
+                                    
+                                    <select class="custom-select form-control" id="doctor1">
+                                        <option selected>Choose...</option>
+                                        {{#each doctors}}
+                                        
+                                        <option value="{{ this.doctorid }}">{{ this.docname }}</option>
+                                    
+                                        {{/each}}
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Date Picker Input -->
+
+                            <div class="form-group  pb-2">
+                                <div class="col-sm-12">
+                                    <label for="date" class="none px-2 pb-1">Choose a Date</label>
+                                    <input type="date" name="date" id="date1" class="form-control">
+                                </div>
+                            </div>
+                            <!-- DEnd ate Picker Input -->
+                            <!-- Time Picker Input -->
+
+                            <div class="form-group  pb-2">
+                                <div class="col-sm-12">
+                                    <label for="time" class="none px-2 pb-1">Choose a time</label>
+                                    <input type="time" name="time" id="time1" class="form-control">
+                                </div>
+                            </div>
+                            <!-- End the time Picker Input -->
+                            
+
+                            <div class="row ">
+                                <a class="d-btn mx-auto mt-5"  id="NCAB1" href="">
+                                    <span>Submit</span>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

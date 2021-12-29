@@ -38,6 +38,7 @@ adminRouter.post('/signup', (req, res, next) => {
   Admin.register(new Admin({username: req.body.username}), 
     req.body.password, (err, user) => {
     if(err){
+      console.log('er');
       res.statusCode = 500;
       res.setHeader('Content-Type', 'application/json');
       res.json({err: err});
@@ -54,6 +55,7 @@ adminRouter.post('/signup', (req, res, next) => {
     
        user.save((err, user) => {
         if (err) {
+          console.log('err');
           res.statusCode = 500;
           res.setHeader('Content-Type', 'application/json');
           res.json({err: err});
@@ -87,14 +89,16 @@ adminRouter.post('/login', passport.authenticate('adminLocal'), (req, res) => {
  
   var maxAge =authenticate.maxAge;
   var uid = req.user._id;
+  var name =req.user.hospitalname;
   var token = authenticate.getToken({_id: req.user._id});
   res.statusCode = 200;
   //res.setHeader('Content-Type', 'application/json');
   //res.json({success: true, token: token, status: 'You are successfully logged in!'});
   
   res.cookie('jwt',token, {httpOnly:true, maxAge : maxAge * 1000});
-  res.status(201).json({user : uid});
-  //res.redirect('/adminpage');
+  res.status(201).json({user : uid, name : name});
+  //res.render('admin', { title: 'edoc', name: name });
+
    //res.status(201).send({ code: 0, message: 'ok', data: token });
 });
 

@@ -29,6 +29,21 @@ var passportLocalMongoose = require('passport-local-mongoose');
     timestamps: true
 });
 */
+var hospitalSchema = new mongoose.Schema({
+    
+    author:  {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Patient'
+    },
+
+    number: {
+      type:Number
+    }
+}, {
+    timestamps: true
+});
+
+mongoose.model('Hospital', hospitalSchema);
 
 var Doctor = new mongoose.Schema({
 
@@ -45,11 +60,22 @@ var Doctor = new mongoose.Schema({
 
      doctorname: {
       type: String,
-        default: ''
+        default: '',
+        unique: true
     },
+
+    city: {
+        type: String,
+          default: ''
+      },
  
     regno: {
       type: String,
+        default: ''
+    },
+
+    specialty: {
+        type: String,
         default: ''
     },
     
@@ -58,7 +84,9 @@ var Doctor = new mongoose.Schema({
     admin:   {
         type: Boolean,
         default: false
-    }
+    },
+
+    hospitals:[hospitalSchema]
 
     //comments:[clinicSchema]
 

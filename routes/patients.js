@@ -95,18 +95,45 @@ patientRouter.post('/signup', (req, res, next) => {
 
 
 
-patientRouter.post('/login', passport.authenticate('patientLocal'), (req, res) => {
+patientRouter.post('/login', passport.authenticate(['patientLocal','doctorLocal','adminLocal']), (req, res) => {
  
   
   var maxAge =authenticate.maxAge;
   var uid = req.user._id;
-  var name = req.user.FirstName;
-  var token = authenticate.getToken({_id: req.user._id});
-  res.statusCode = 200;
-  //res.setHeader('Content-Type', 'application/json');
-  //res.json({success: true, token: token, status: 'You are successfully logged in!'});
-  res.cookie('jwt',token, {httpOnly:true, maxAge : maxAge * 1000});
-  res.status(201).json({user : uid , name : name});
+  if(req.user.FirstName){
+    var name = req.user.FirstName;
+
+    var token = authenticate.getToken({_id: req.user._id});
+    res.statusCode = 200;
+    //res.setHeader('Content-Type', 'application/json');
+    //res.json({success: true, token: token, status: 'You are successfully logged in!'});
+    res.cookie('jwt',token, {httpOnly:true, maxAge : maxAge * 1000});
+    res.status(201).json({user : uid , name : name});
+  }
+
+  if(req.user.hospitalname){
+    var hospital = req.user.hospitalname;
+
+    var token = authenticate.getToken({_id: req.user._id});
+    res.statusCode = 200;
+    //res.setHeader('Content-Type', 'application/json');
+    //res.json({success: true, token: token, status: 'You are successfully logged in!'});
+    res.cookie('jwt',token, {httpOnly:true, maxAge : maxAge * 1000});
+    res.status(201).json({user : uid , hospital : hospital});
+  }
+
+  if(req.user.doctorname){
+    var doctor = req.user.doctorname;
+
+    var token = authenticate.getToken({_id: req.user._id});
+    res.statusCode = 200;
+    //res.setHeader('Content-Type', 'application/json');
+    //res.json({success: true, token: token, status: 'You are successfully logged in!'});
+    res.cookie('jwt',token, {httpOnly:true, maxAge : maxAge * 1000});
+    res.status(201).json({user : uid , doctor : doctor});
+  }
+  
+ 
    //res.status(201).send({ code: 0, message: 'ok', data: token });
 });
 

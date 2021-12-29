@@ -20,7 +20,7 @@ function getchannelpage() {
                     
                     
                     $.ajax({
-                    url: `${window.location.origin}/patient/clinics`,
+                    url: `${window.location.origin}/clinics`,
                     method: "GET",
             
                     success: function(data) {
@@ -28,8 +28,8 @@ function getchannelpage() {
                           //alert("you are logged out!");
                           
                           //document.location.href = "/channelpage";
-                          
-                          console.log(data);
+                          console.log("success");
+                          console.log(data.list);
 
                           /*newnavItem.parentNode.replaceChild(navItem,newnavItem);
                           newItem.parentNode.replaceChild(listItem,newItem);*/
@@ -42,8 +42,7 @@ function getchannelpage() {
                         }
                      })
 
-                    .done(function(data){
-            $('body').html(data);
+                    
         });
 
 
@@ -54,7 +53,7 @@ function getchannelpage() {
         
 
 
-                });
+                
        
             //send data to node server with ajax
             //url map to http://localhost/register-new-user

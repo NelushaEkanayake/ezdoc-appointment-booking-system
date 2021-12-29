@@ -8,7 +8,7 @@
  	<link rel="stylesheet" type="text/css" href="node_modules1/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="node_modules1/font-awesome/css/font-awesome.css">
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  
  	<link rel="stylesheet" type="text/css" href="css/styles5.css">
     
@@ -111,7 +111,7 @@
 	<div class="container">
         <div class="row " >
             <ol class="col-12 breadcrumb">
-                <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item active">Channel</li>
             </ol>
             <div class="col-12">
@@ -123,27 +123,36 @@
     </div>
 
     <div class="container">
+    	
     	{{#each  list}}
+
+    	 
+
+ 			 
+ 			 
     	<div class="row">
     		
-
+    		
     		<div class="col-lg-12 col-xl-12 mr-auto  py-2 top-navbar" style="margin:0px auto" >
 
-    			<div class="card " style="box-shadow: 2px 2px 2px  #999; " >
+    			<div class="card " id="{{this._id}}" style="box-shadow: 2px 2px 2px  #999; " >
                     
                     <div class="card-body" style="padding-top: 3px; padding-bottom: 3px; " >
                         <div class="row" > 
                             <div class="col-sm-2  " style=" padding: 3px;">
-                            	<img src="img/alberto.png" class="d-flex mr-3 img-thumbnail align-self-center " alt="alberto">
+                            	<img src="img/doc.jpg" class="d-flex mr-3 img-thumbnail align-self-center " alt="alberto">
                             </div>
                             <div class="col-sm-6" style=" padding: 3px">
-                            	<h6>{{this.clinicname}}</h6>
-               			 		<h6>{{this.doctor}}</h6>
-               			 		<h6>{{this.hospital}}</h6>
-                				<p  class="d-none d-sm-block">{{this.time}}</p>
+                            	<h6 id="">Specialty : {{this.clinicname}}</h6>
+               			 		<h6 id="">Doctor : {{this.doctor}}</h6>
+               			 		<h6 id="">Hospital : {{this.hospital}}</h6>
+									<h6 id="">Date : {{this.Date}}</h6>
+								
+                				<p  class="d-none d-sm-block" id="">Time : {{this.time}}</p>
+                				
                             </div>
                             <div class="col-sm-4 align-self-center" style=" padding-left: 80px">
-                            	<button class="btn  docbook ">Book now	</button>
+                            	<button class="btn  docbook " data-id="{{this._id}}">Book now	</button>
 
                             </div>
                         </div>
@@ -159,6 +168,7 @@
     		
     	</div>
     	{{/each}}
+    	
     	
     	
     </div>
@@ -179,7 +189,7 @@
 
 
 	 <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
-    <script src="node_modules1/jquery/dist/jquery.slim.min.js"></script>
+   
     <script src="node_modules1/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules1/bootstrap/dist/js/bootstrap.min.js"></script>
 

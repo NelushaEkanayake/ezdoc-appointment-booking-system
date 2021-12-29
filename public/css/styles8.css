@@ -1,0 +1,56 @@
+#contact2 {
+    background-image: url(../img/steth.jpg);
+    background-attachment: fixed;
+    padding: 0px;
+    background-size: cover;
+    width: 100%;
+  }
+  
+  #contact2 .back {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 60px;
+  }
+  
+  #contact2 .back .title {
+    font-size: 2em;
+    line-height: 48px;
+  }
+  
+  #contact2 .back .form-control {
+    background-color: #f1efef;
+  }
+  
+  #contact2 .d-btn {
+    background-image: -webkit-gradient(linear, left top, right top, from(#78d3c4), color-stop(50%, #079499));
+    background-image: linear-gradient(to right, #78d3c4 0%, #079499 50%);
+    border-radius: 30px;
+    color: black;
+    height: 50px;
+    margin: 0 auto;
+    padding: 2px;
+    text-decoration: none;
+    width: 167px;
+  }
+  
+  #contact2 .d-btn :hover {
+    color: #fff;
+    background: transparent;
+  }
+  
+  #contact2 .d-btn span {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: #e7e8e9;
+    border-radius: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100%;
+    -webkit-transition: background .5s ease;
+    transition: background .5s ease;
+    width: 100%;
+  }

@@ -47,6 +47,12 @@ doctorRouter.post('/signup', (req, res, next) => {
     else {
       if (req.body.regno)
         user.regno = req.body.regno;
+
+      if (req.body.city)
+        user.city = req.body.city;
+
+      if (req.body.specialty)
+        user.specialty = req.body.specialty;
       
       if (req.body.doctorname)
         user.doctorname = req.body.doctorname;

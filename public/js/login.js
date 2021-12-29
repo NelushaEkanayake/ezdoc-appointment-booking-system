@@ -9,34 +9,124 @@ function handleLoginBtn(){
             method: "POST",
             data: {username: username, password: password},
             success: function(data) {
-                const listItem = document.querySelector(".loginuser");
-                const newItem = document.createElement('li');
-                newItem.className += "nav-item";
-            
-                newItem.innerHTML = '<a class="nav-link" href=""  id="NewUser"></a>';
-                
-                listItem.parentNode.replaceChild(newItem, listItem);
-                var usname = document.getElementById("NewUser");
-                usname.innerHTML = data.name;
 
-            
-
-                const navItem = document.querySelector(".ReGU");
-                const newnavItem = document.createElement('li');
-                newnavItem.className += "nav-item";
-                newnavItem.setAttribute("id", "LogOUT");
+                $("#loginModal").modal('hide');
+                alert("You are successfully loged in!");
+                console.log(data);
+                if(data.name){
+                    const listItem = document.querySelector(".loginuser");
+                    const newItem = document.createElement('li');
+                    newItem.className += "nav-item";
                 
-
-                newnavItem.innerHTML = '<a class="nav-link" href="">Logout</a>';
+                    newItem.innerHTML = '<a class="nav-link" href=""  id="NewUser"></a>';
+                    
+                    listItem.parentNode.replaceChild(newItem, listItem);
+                    var usname = document.getElementById("NewUser");
+                    usname.innerHTML = data.name;
+    
                 
-                navItem.parentNode.replaceChild(newnavItem, navItem);
+    
+                    const navItem = document.querySelector(".ReGU");
+                    const newnavItem = document.createElement('li');
+                    newnavItem.className += "nav-item";
+                    newnavItem.setAttribute("id", "LogOUT");
+                    
+    
+                    newnavItem.innerHTML = '<a class="nav-link" href="">Logout</a>';
+                    
+                    navItem.parentNode.replaceChild(newnavItem, navItem);
+
+
+                    $("#LogOUT").on("click", function(event) {
+                        event.preventDefault();
+         
+                             $.ajax({
+                             url: 'http://localhost:3000/users/logout',
+                             method: "GET",
+                     
+                             success: function(data) {
+                         
+                                   alert("you are logged out!");
+                                   newnavItem.parentNode.replaceChild(navItem,newnavItem);
+                                   newItem.parentNode.replaceChild(listItem,newItem);
+                             
+                         
+         
+                                  },
+                              error: function(err) {
+                                 alert("error");
+                                 }
+                              })
+                 
+         
+         
+                         });
+         
+                }
+
+                if(data.doctor){
+                    document.location.href = "/doctorpage";
+
+                    $("#docsignout").on("click", function(event) {
+                        event.preventDefault();
+         
+                             $.ajax({
+                             url: `${window.location.origin}/doctors/logout`,
+                             method: "GET",
+                     
+                             success: function(data) {
+                         
+                                   alert("you are logged out!");
+                                   document.location.href = "/";
+                             
+                         
+         
+                                  },
+                              error: function(err) {
+                                 alert("error");
+                                 }
+                              })
+                 
+         
+         
+                         });
+                }
+
+                if(data.hospital){
+                    var name= data.hospital;
+                    var id = data.user;
+                    document.location.href = "/adminpage"+'/'+name; 
+
+                    $("#hossignout").on("click", function(event) {
+                        event.preventDefault();
+         
+                             $.ajax({
+                             url: `${window.location.origin}/admins/logout`,
+                             method: "GET",
+                     
+                             success: function(data) {
+                         
+                                   alert("you are logged out!");
+                                   document.location.href = "/";
+                             
+                         
+         
+                                  },
+                              error: function(err) {
+                                 alert("error");
+                                 }
+                              })
+                 
+         
+         
+                         });
+                }
+                
         
                 
                     
                 
-                $("#loginModal").modal('hide');
-                alert("You are successfully loged in!");
-                console.log(data);
+                
 
 
 

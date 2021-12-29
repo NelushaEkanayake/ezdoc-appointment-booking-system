@@ -24,7 +24,7 @@
 			<a href="#" class="navbar-brand mr-auto"><img src="img/logo.png" height="80" width="80" alt="logo"></a>
 			<div class="collapse navbar-collapse" id="Navbar">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item" id = getchannel name = getchannel><a class="nav-link" href="http://localhost:3000/clinics">Channel</a></li>
+				<li class="nav-item" id = getchannel name = getchannel><a class="nav-link" target="_blank" href="http://localhost:3000/clinics">Channel</a></li>
 				<li class="nav-item ReGU"><a class="nav-link" href="" data-toggle="modal" data-target="#register" id="regidh" href ="/register">Register</a></li>
                 <li class="nav-item loginuser"><a class="nav-link" href="" data-toggle="modal" data-target="#loginModal" id="luname" href="/login">login</a></li>
                 </a></li>
@@ -78,6 +78,30 @@
         					</div>
         					<div class="col-sm-5">
         						<input type="email" name="Dusername" placeholder="" class="form-control form-control-sm"  id="Dusername">
+
+                                <small class="form-text invalid-feedback">this field must be filled
+                                         letters</small>
+        					 </div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-4 order-sm-first offset-sm-1">
+        						<label>Specialty</label>	
+        					</div>
+        					<div class="col-sm-5">
+        						<input type="text" name="specialty" placeholder="" class="form-control form-control-sm"  id="specialty">
+
+                                <small class="form-text invalid-feedback">this field must be filled
+                                         letters</small>
+        					 </div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-4 order-sm-first offset-sm-1">
+        						<label>City</label>	
+        					</div>
+        					<div class="col-sm-5">
+        						<input type="text" name="city" placeholder="" class="form-control form-control-sm"  id="city">
 
                                 <small class="form-text invalid-feedback">this field must be filled
                                          letters</small>
@@ -462,7 +486,7 @@
          <div class="container ">
 
             
-      		<div id="content" class="offset-md-3 row no-gutters mt-3" >
+      		<!--<div id="content" class="offset-md-3 row no-gutters mt-3" >
       		    
       				<div class="col-md-8">
                         <form name="search-form">
@@ -478,7 +502,7 @@
                 
 
         		   
-      		</div>		
+      		</div>-->		
           			
       			
         		
@@ -491,14 +515,22 @@
     		<div id="content" class="offset-md-3 row no-gutters mt-3" >
       		
       				<div class="col-md-8">
-      					<input class="form-control border-secondary rounded-pill border-0 fas" type="search"  id="search_input_2" style="width: 100%" placeholder="&#xf0f0;">
-            			
+      					<!--<input class="form-control border-secondary rounded-pill border-0 fas" type="search"  id="search_input_2" style="width: 100%" placeholder="Type doctor name">-->
+            			<select class="custom-select form-control border-secondary rounded-pill border-0 fas" id="search_input_2"  style="width: 100%">
+                                        <option selected>Choose...</option>
+                                        {{#each doctors}}
+                                        
+                                        <option value="{{ this._id }}">{{ this.doctorname }}</option>
+                                    
+                                        {{/each}}
+                                        
+                                    </select>
           			</div>
-          			<div class="col-auto">
+          			<!--<div class="col-auto">
           				<button class="btn   border-0  ml-n5 pull-right btn btn-default search-btn" type="button" >
-        				<i class="fa fa-search"></i>
+        				<i class="fa fa-user-md"></i>
         				</button>
-          			</div>
+          			</div>-->
         		   
       		</div>
 
@@ -506,14 +538,18 @@
       		<div id="content" class="offset-md-3 row no-gutters mt-3 " >
       		
       				<div class="col-md-8">
-      					<input class="form-control border-secondary rounded-pill border-0 fas" type="search"  id="search_input_3" style="width: 100%" placeholder="&#xf0f8;">
-            			
+      					<!--<input class="form-control border-secondary rounded-pill border-0 fas" type="search"  id="search_input_3" style="width: 100%" placeholder="&#xf0f8;">-->
+            			<select class="custom-select form-control border-secondary rounded-pill border-0 fas" id="search_input_3"  style="width: 100%">
+                                        <option selected>Choose...</option>
+                                        {{#each admin}}
+                                        
+                                        <option value="{{ this._id }}">{{ this.hospitalname }}</option>
+                                    
+                                        {{/each}}
+                                        
+                                    </select>
           			</div>
-          			<div class="col-auto">
-          				<button class="btn   border-0  ml-n5 pull-right btn btn-default search-btn" type="button" >
-        				<i class="fa fa-search"></i>
-        				</button>
-          			</div>
+          			
         		   
       		</div>
 
@@ -521,20 +557,15 @@
       		
       				<div class="col-md-8 ">
       					
-      					<input class="form-control border-secondary rounded-pill border-0 placeicon fas" type="search"  id="search_input_4" style="width: 100%" placeholder="&#xf073;">
+      					<input class="form-control border-secondary rounded-pill border-0 placeicon fas" type="date"  id="search_input_4" style="width: 100%" placeholder="&#xf073;">
             			
           			</div>
-          			<div class="col-auto">
-          				<button class="btn   border-0  ml-n5 pull-right btn btn-default search-btn" type="button" >
-        				<i class="fa fa-search"></i>
-        				</button>
-          			</div>
-        		   
+          			
       		</div>
 
     		<div class="offset-md-5 row ">
     			<div class="col-sm-4">
-    				<button class="btn    btn-default sbutton" id="search-button" type="button" style="width: 50%; background-color: #009b9b"><b>Search</b></button>
+    				<button class="btn    btn-default sbutton" id="search-button1" type="button" style="width: 50%; background-color: #009b9b"><b>Search</b></button>
     			</div>
     			
     		</div>

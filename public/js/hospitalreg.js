@@ -51,7 +51,7 @@ function validateInput2(hospitalname,regno,address,username,password) {
 
 function handleClickRegisterHOS() {
     $("#NewHos").on("click", function(event) {
-        alert("ejfheiu");
+        
         event.preventDefault();
 
         let hospitalname = $("#HospitalName").val();
@@ -67,7 +67,7 @@ function handleClickRegisterHOS() {
         let check1 = validateInput2(hospitalname,regno,address,username,password);
 
        if (!check1) {
-         alert("hi");
+         
             //send data to node server with ajax
             //url map to http://localhost/register-new-user
              //var signupAPI = URL + "/users/signup";
@@ -89,14 +89,37 @@ function handleClickRegisterHOS() {
                     console.log(data);
 
                     $.ajax({
-                    url: `${window.location.origin}/admins/login`,
+                    url: `${window.location.origin}/users/login`,
                     method: "POST",
                     data: {username: username, password: password},
                     success: function(data) {
                            
-
-                           document.location.href = "/adminpage";
-                           console.log(data);
+                        var name= data.hospital;
+                        document.location.href = "/adminpage"+'/'+name; 
+    
+                        $("#hossignout").on("click", function(event) {
+                            event.preventDefault();
+             
+                                 $.ajax({
+                                 url: `${window.location.origin}/admins/logout`,
+                                 method: "GET",
+                         
+                                 success: function(data) {
+                             
+                                       alert("you are logged out!");
+                                       document.location.href = "/";
+                                 
+                             
+             
+                                      },
+                                  error: function(err) {
+                                     alert("error");
+                                     }
+                                  })
+                     
+             
+             
+                             });
 
 
 

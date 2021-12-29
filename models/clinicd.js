@@ -1,7 +1,25 @@
 var mongoose = require('mongoose');
-//var Schema = mongoose.Schema;
+const AutoIncrement = require('mongoose-auto-increment');
+var Schema = mongoose.Schema;
 //var passportLocalMongoose = require('passport-local-mongoose');
 //var ClinicSchema = require('./common');
+
+var appointmentSchema = new Schema({
+    
+    author:  {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Patient'
+    },
+
+    number: {
+      type:Number
+    }
+}, {
+    timestamps: true
+});
+
+mongoose.model('Appointment', appointmentSchema);
+
 
 var clinicschema = new mongoose.Schema({
 
@@ -11,6 +29,11 @@ var clinicschema = new mongoose.Schema({
     },
  
     time: {
+      type: String,
+        default: ''
+    },
+
+    Date: {
       type: String,
         default: ''
     },
@@ -29,12 +52,23 @@ var clinicschema = new mongoose.Schema({
       type: String,
         default: ''
     },
+
+    clinicid:{
+      type: String,
+        default: ''
+      },
+
+      state:{
+        type: String,
+          default: ''
+        },
     
 
         hospital:  {
         type: String,
         default: ''
-    }
+    },
+    appointments:[appointmentSchema]
   },{
     timestamps: true
   }

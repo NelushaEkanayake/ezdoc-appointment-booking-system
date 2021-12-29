@@ -9,7 +9,7 @@
     
 
  
-  <link rel="stylesheet" type="text/css" href="css/styles2.css">
+  <link rel="stylesheet" type="text/css" href="../css/styles2.css">
   <title></title>
 </head>
 <body>
@@ -26,11 +26,11 @@
 					<div class="row">
 
 						<div class="col-lg-3 col-xl-2 sidebar fixed-top">
-							<a href="#" class="navbar-brand mx-auto text-center py-3 mb-4 d-block "><img src="img/logo.png" height="70" width="70"></a>
+							<a href="#" class="navbar-brand mx-auto text-center py-3 mb-4 d-block "><img src="../img/logo.png" height="70" width="70"></a>
 
 
 							<div>
-								<img src="img/avatar.svg" width="50" class="rounded-circle mx-auto d-block">
+								<img src="../img/avatar.svg" width="50" class="rounded-circle mx-auto d-block">
 
 								
 
@@ -38,16 +38,16 @@
 
 							<div class="text-center">
 								
-								<a href="#" class="text-white  "><span>Nelusha Ekanayake</span></a>
+								<a href="#" class="text-white  "><span>{{ name }}</span></a>
 							</div>
 
 							
 								
 								<ul class="navbar-nav flex-column mt-4">
 
-									<li class="nav-item "><a href="" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="modal" data-target="#DoctorLogin"><span class="fas fa-user-md mr-3 text-light
-										"></span>Add Doctors</a></li>
-									<li class="nav-item "><a href="" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="modal" data-target="#NewClinic" id="AddSession"><span class="far fa-calendar-alt mr-3 text-light
+									<li class="nav-item "><a href="/doctorRequest" target="_blank" class="nav-link text-white p-3 mb-2 sidebar-link" ><span class="fas fa-user-md mr-3 text-light
+										"></span>Doctor request</a></li>
+									<li class="nav-item "><a href="/addnewclinic"  target="_blank" class="nav-link text-white p-3 mb-2 sidebar-link"  id="AddSession"><span class="far fa-calendar-alt mr-3 text-light
 										"></span>Add Sessions</a></li>
 									<li class="nav-item "><a href="" class="nav-link text-white p-3 mb-2 sidebar-link"><span class="fas fa-user-injured mr-3 text-light
 										"></span>New Patient </a></li>
@@ -65,7 +65,7 @@
 								</div>
 								<div class="col-md-5">
 
-									<form>
+									<!--<form>
 										<div class="input-group">
 										
 										<input type="text" name=""  class="form-control search-input" placeholder="search">
@@ -75,24 +75,14 @@
 										</button>	
 
 										</div>
-									</form>
+									</form>-->
 									
 								</div>
 								<div class="col-md-3 ">
 
 									<ul class="navbar-nav ">
 
-										<li class="nav-item icon-parent"><a href="" class="nav-link icon-bullet"><i class="fas fa-comments text-muted fa-lg">
-											
-										</i></a>
-											
-										</li>
-
-										<li class="nav-item icon-parent"><a href="" class="nav-link icon-bullet"><i class="fas fa-bell text-muted fa-lg">
-											
-										</i></a>
-											
-										</li>
+										
 
 										<li class="nav-item ml-md-auto" id="hossignout" name="hossignout"><a href="" class="nav-link"><i class="fas fa-sign-out-alt text-muted fa-lg">
 											
@@ -140,7 +130,16 @@
                     <label>clinicname</label>  
                   </div>
                   <div class="col-sm-5">
-                    <input type="text" name="clinicName" placeholder="" class="form-control form-control-sm"  id="clinicName">
+                    
+
+                    <select class="form-control form-control-sm" id="clinicName"  name="clinicName">
+                         <option>Blood</option>
+                          <option>Back neck and spine</option>
+                          <option>Bone joint and muuscle</option>
+                          <option>Eye</option>
+                          <option>Heart</option>
+                          <option>Digestive system</option>
+                    </select>
 
                                 <small class="form-text invalid-feedback">this field must be filled
                                          letters</small>
@@ -280,12 +279,12 @@
         <div class="row mb-5">
           <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
             <div class="row align-items-center">
-              <div class="col-xl-6 col-12 mb-4 mb-xl-0 mt-5">
+              <div class="col-xl-12 col-12 mb-4 mb-xl-0 mt-5">
                 <h3 class="text-muted text-center mb-3"></h3>
                 <table class="table table-striped bg-light text-center table-hover">
                 	<thead>
                 		<tr>
-                			<th colspan="3" class="text-left">Daily Sessions</th>
+                			<th colspan="3" class="text-left">Available Clinics</th>
                 			<th class="text-right mr-3" colspan="2" ><i class="fa fa-calendar-alt"></i></th>
                 		</tr>
                 	</thead>
@@ -295,50 +294,27 @@
 
                   <thead>
                     <tr class="text-muted">
-                      <th>#</th>
+                      
                       <th>Speciality</th>
                       <th>Doctor name</th>
-                      
+                      <th>Hospital name</th>
+                      <th>Date</th>
                       <th>time</th>
-                      <th>cancel</th>
+                      <th>state</th>
                     </tr>
                   </thead>
                   <tbody>
+                    {{#each  clinics}}
                     <tr>
-                      <th>1</th>
-                      <td>John</td>
-                      <td>$2000</td>
-                      <td></td>
-                      <td><button type="button" class="btn btn-info btn-sm">cancel</button></td>
+                      
+                      <td> {{this.clinicname}} </td>
+                      <td> {{this.doctor}} </td>
+                      <td> {{this.hospital}} </td>
+                      <td> {{this.Date}} </td>
+                      <td> {{this.time}} </td>
+                      <td><button type="button" class="btn btn-info btn-sm"> {{this.state}} </button></td>
                     </tr>
-                    <tr>
-                      <th>2</th>
-                      <td>Ann</td>
-                      <td>$2000</td>
-                      <td></td>
-                      <td><button type="button" class="btn btn-info btn-sm">cancel</button></td>
-                    </tr>
-                    <tr>
-                      <th>3</th>
-                      <td>Mark</td>
-                      <td>$2000</td>
-                      <td></td>
-                      <td><button type="button" class="btn btn-info btn-sm">cancel</button></td>
-                    </tr>
-                    <tr>
-                      <th>4</th>
-                      <td>Mary</td>
-                      <td>$2000</td>
-                      <td></td>
-                      <td><button type="button" class="btn btn-info btn-sm">cancel</button></td>
-                    </tr>
-                    <tr>
-                      <th>5</th>
-                      <td>Bob</td>
-                      <td>$2000</td>
-                      <td></td>
-                      <td><button type="button" class="btn btn-info btn-sm">cancel</button></td>
-                    </tr>
+                   	{{/each}}
                   </tbody>
                 </table>
 
@@ -375,96 +351,7 @@
                 <!-- end of pagination -->
 
               </div>
-              <div class="col-xl-6 col-12  mb-4 mb-xl-0 mt-5">
-                <h3 class="text-muted text-center mb-3"></h3>
-                <table class="table table-dark table-hover text-center">
-
-                	<thead>
-                	    <tr>
-                	    	<th colspan="3" class="text-left">
-                	    		Session 1
-                	    	</th>
-
-                	    </tr>
-
-                	</thead>
-
-                	
-                  <thead>
-                    <tr class="text-muted">
-                      <th>#</th>
-                      <th>Name</th>
-                     
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th>1</th>
-                      <td>Monica</td>
-                      
-                      <td><span class="badge badge-success w-75 py-2">paid</span></td>
-                    </tr>
-                    <tr>
-                      <th>2</th>
-                      <td>Nick</td>
-                      
-                      <td><span class="badge badge-success w-75 py-2"> paid</span></td>
-                    </tr>
-                    <tr>
-                      <th>3</th>
-                      <td>Alex</td>
-                     
-                      <td><span class="badge badge-danger w-75 py-2">not paid</span></td>
-                    </tr>
-                    <tr>
-                      <th>4</th>
-                      <td>Jane</td>
-                      
-                      <td><span class="badge badge-danger w-75 py-2">not paid</span></td>
-                    </tr>
-                    <tr>
-                      <th>5</th>
-                      <td>Michael</td>
-                      
-                      <td><span class="badge badge-success w-75 py-2">paid</span></td>
-                    </tr>
-                    
-                  </tbody>
-                </table>
-                 <!-- pagination -->
-                 	<nav>
-                  <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                      <a href="#" class="page-link py-2 px-3">
-                        <span>&laquo;</span>
-                      </a>
-                    </li>
-                    <li class="page-item active">
-                      <a href="#" class="page-link py-2 px-3">
-                        1
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a href="#" class="page-link py-2 px-3">
-                        2
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a href="#" class="page-link py-2 px-3">
-                        3
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a href="#" class="page-link py-2 px-3">
-                        <span>&raquo;</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-                 
-                <!-- end of pagination -->
-              </div>
+              
             </div>
           </div>
         </div>
